@@ -16,5 +16,5 @@ This is my personal portfolio website built with **Flask**, showcasing my projec
 - **Frontend:** HTML, CSS, JavaScript
 - **Tools:** Git, GitHub, Virtual Environment
 
-## 📂 Project Structure
+
 
