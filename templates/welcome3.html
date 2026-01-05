@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renusha | Portfolio</title>
+    <!----- Google Font ------->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!----- Bootstrap --------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!----- Font Awesome ------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!------ Custom Styles ----->
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        /* =========================================================
+             BASE STYLES & VARIABLES
+        ========================================================= */
+        :root {
+            --background: #0F172A;
+            --primary: #22D3EE;
+            --secondary: #64748B;
+            --accent: #F4F4F4;
+            --transition: all 0.3s ease;
+        }
+        body {
+            background: linear-gradient(180deg, #0F172A 0%, #0E1A2B 100%);
+            background-attachment: fixed;
+            color: #e0f7fa;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            padding-top: 76px;
+        }
+        p {
+            line-height: 1.7;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            color: var(--secondary);
+        }
+        h3, h4, h5 {
+            color: hotpink;
+            font-weight: 600;
+        }
+        section {
+            padding: 70px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        section h2, .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #22b1ee;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.5px;
+        }
+        section + section {
+            margin-top: -20px;
+        }
+
+
+        /* =========================================================
+             NAVBAR
+        ========================================================= */
+        .navbar {
+            padding: 0.8rem 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.95);
+        }
+        .navbar-brand {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .navbar .nav-link {
+            color: var(--accent);
+            transition: color 0.3s;
+            font-weight: 500;
+            margin: 0 0.5rem;
+        }
+        .navbar .nav-link:hover {
+            color: var(--primary);
+        }
+        .text-primary-glow {
+            color: var(--primary);
+            text-shadow: 0 0 8px rgba(34,211,238,0.6);
+        }
+
+        /* Progress bar */
+        .progress-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: transparent;
+                z-index: 1000;
+        }
+        .progress-bar {
+                height: 4px;
+                background: var(--primary);
+                width: 0%;
+                transition: width 0.3s ease;
+        }
+
+        /* =========================================================
+           HERO SECTION
+        ========================================================= */
+        #hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at 20% 30%, rgba(34,211,238,0.15), transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(34,211,238,0.1), transparent 60%);
+        }
+        .hero-title {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Avatar Coin Animation */
+         .avatar-coin {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            perspective: 1200px;
+         }
+         .avatar-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            border-radius: 50%;
+            animation: slowSpin 12s linear infinite;
+            transition: transform 1s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+         }
+         .avatar-coin:hover .avatar-inner {
+            animation-play-state: paused;
+            transform: rotateY(180deg) rotateX(10deg);
+            box-shadow: 0 0 45px rgba(34, 211, 238, 0.9);
+         }
+         .avatar-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 50%;
+            overflow: hidden;
+         }
+         .avatar-face img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+         }
+         .avatar-back {
+            transform: rotateY(180deg);
+         }
+         @keyframes slowSpin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+         }
+
+         /* Scroll Indicator */
+         .scroll-indicator {
+            margin-top: 30px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+         }
+          .arrow-down {
+            width: 18px;
+            height: 18px;
+            border-left: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+            transform: rotate(-45deg);
+            animation: bounce 2s infinite
+          }
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(-45deg); }
+            40% { transform: translateY(6px) rotate(-45deg); }
+            60% { transform: translateY(3px) rotate(-45deg); }
+          }
+
+          /* Typewriter effect - hero text */
+          .typewriter-text {
+              display: inline-block;
+              overflow: hidden;
+              border-right: 3px solid var(--accent);
+              white-space: nowrap;
+              animation: blink 0.75s step-end infinite;
+              font-size: 2.5rem;
+              vertical-align: bottom;
+              color: var(--light);
+          }
+          @keyframes typing {
+              from { width: 0; }
+              to { width: 100%; }
+          }
+          @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary); }
+          }
+
+          /* =========================================================
+             BUTTONS
+          ========================================================= */
+          .btn-primary-custom {
+            background: var(--primary);
+            color: #0F172A;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: box-shadow 0.3s;
+          }
+          .btn-primary-custom:hover {
+            box-shadow:  0 0 12px var(--primary);
+            color:  #0F172A;
+          }
+          .btn-outline-custom {
+              border: 2px solid var(--secondary);
+              color: var(--primary);
+              padding: 0.75rem 1.5rem;
+              border-radius: 50px;
+              font-weight: 600;
+              transition: all 0.3s;
+          }
+          .btn-outline-custom:hover {
+              background: var(--primary);
+              color: #0F172A;
+          }
+          .btn-primary-glow {
+                background: linear-gradient(90deg, #0891b2, #06b6d4 );
+                border: none;
+                color: #ffffff;
+                padding: 10px 28px;
+                font-size: 16px;
+                border-radius: 30px;
+                box-shadow: 0 0 20px rgba(34,211,238,0.3);
+                transition: all 0.3s ease;
+          }
+          .btn-primary-glow:hover {
+                box-shadow: 0 0 30px rgba(34,211,238,0.6);
+                transform: translateY(-3px);
+          }
+
+          /* =========================================================
+             SECTION TITLES & STRUCTURE
+          ========================================================= *
+          .section-title {
+                font-weight: 700;
+                font-size: 2rem;
+                color: var(--primary);
+                margin-bottom: 3rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                position: relative;
+          }
+          .section-title::after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 3px;
+                background: var(--primary);
+                margin: 10px auto 0;
+                border-radius: 2px;
+          }
+          section h2 {
+                font-size: 2.4rem;
+                color: var(--primary);
+                text-align: center;
+                letter-spacing: 1px;
+                margin-bottom: 40px;
+                position: relative;
+          }
+          section h2::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 3px;
+                background: var(--accent);
+                border-radius: 2px;
+          }
+
+          /* =========================================================
+             ️ SERVICES SECTION
+          ========================================================= */
+          .service-card {
+                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(34,211,238,0.1);
+                border-radius: 16px;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+                padding: 1.5rem 1.2rem;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+          }
+          .service-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--primary), transparent);
+                opacity: 0;
+                transition: opacity 0.3s;
+          }
+          .service-card:hover::before {
+                opacity: 1;
+          }
+          .service-card:hover {
+            transform: translateY(-8px);
+                box-shadow: 0 10px 30px rgba(34,211,238,0.15);
+                border-color: rgba(34,211,238,0.3);
+          }
+          .service-icon {
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
+                color: var(--primary);
+          }
+          .service-title {
+                color: var(--primary);
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 0.8rem;
+          }
+          .service-text {
+                color: var(--secondary);
+                line-height: 1.6;
+                font-size: 0.9rem;
+          }
+
+          /* =========================================================
+             PROJECTS SECTION
+          ========================================================= */
+          #projects {
+                padding: 60px 0;
+          }
+          #projects .container {
+              max-width: 1100px;
+              margin: 0 auto;
+          }
+          .project-card {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2rem;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                backdrop-filter: blur(6px);
+                padding: 1.5rem;
+                transition: box-shadow 0.3s, transform 0.3s;
+          }
+          .project-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 0 20px rgba(34,211,238,0.4);
+          }
+
+          /* Image Area */
+          .project-image {
+                flex: 1 1 400px;
+                max-width: 420px;
+                height: 260px;
+                object-fit: cover;
+                border-radius: 12px;
+                display: block;
+                margin: 0 auto;
+          }
+
+          /* Text Area */
+          .project-description {
+                flex: 1 1 400px;
+                margin-top: 0;
+                padding: 1rem 1.2rem;
+                background: rgba(255,255,255,0.03);
+                border-radius: 12px;
+                backdrop-filter: blur(5px);
+          }
+          .project-description h5 {
+                text-align: center;
+                color: hotpink;
+                font-size: 1.5rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                margin-bottom: 0.6rem;
+          }
+          .project-description .lead {
+                font-size: 1rem;
+                line-height: 1.6;
+                color: var(--secondary);
+          }
+          .project-links {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 20px;
+          }
+          .project-links a {
+                color: var(--secondary);
+                text-decoration: none;
+                font-weight: 500;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 16px;
+                border: 1px solid transparent;
+                border-radius: 30px;
+                background: rgba(34, 211, 238, 0.05);
+                backdrop-filter: blur(4px);
+                transition: all 0.3s ease;
+          }
+          .project-links a:hover {
+                color: var(--accent);
+                border-color: var(--primary);
+                background: rgba(34, 211, 238, 0.15);
+                box-shadow: 0 0 12px var(--primary);
+                transform: translateY(-3px) scale(1.05);
+          }
+
+          /* Carousel */
+          .carousel-item {
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 20px;
+                height: auto;
+          }
+          #projectsCarousel .carousel-inner img {
+                border-radius: 16px;
+                box-shadow: 0 0 20px rgba(34,211,238,0.15);
+          }
+          #projectsCarousel .carousel-indicators [data-bs-target] {
+                background-color: var(--secondary);
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+          }
+          #projectsCarousel .carousel-indicators .active {
+                background-color: var(--primary);
+                transform: scale(1.2);
+          }
+          .custom-arrow {
+                width: 50px;
+                height: 50px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 50%;
+                background: rgba(34, 211, 238, 0.1);
+                border: 2px solid rgba(34, 211, 238, 0.3);
+                transition: all 0.3s ease;
+          }
+          .custom-arrow:hover {
+                background: rgba(34, 211, 238, 0.25);
+                box-shadow: 0 0 25px rgba(34, 211, 238, 0.8), 0 0 50px rgba(34, 211, 238, 0.4);
+                border-color: var(--primary);
+          }
+          #projectsCarousel .carousel-control-prev,
+          #projectsCarousel .carousel-control-next {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 60px;
+              height: 60px;
+              z-index: 10;
+          }
+          .carousel-control-prev-icon,
+          .carousel-control-next-icon {
+              background-color: var(--primary);
+              mask-repeat: no-repeat;
+              -webkit-mask-repeat: no-repeat;
+              mask-position: center;
+              -webkit-mask-position: center;
+              mask-size: 50%;
+              -webkit-mask-size: 50%;
+              border-radius: 50%;
+              width: 30px;
+              height: 30px;
+              filter: drop-shadow(0 0 10px rgba(34,211,238,0.7));
+           }
+
+
+
+
+
+          /* =========================================================
+             ABOUT SECTION
+          ========================================================= */
+          #about {
+             background: radial-gradient(circle at 15% 20%, rgba(34,211,238,0.08), transparent 70%),
+                         radial-gradient(circle at 80% 70%, rgba(34,211,238,0.06), transparent 70%);
+          }
+          .intro-text {
+                font-size: 1.1rem;
+                font-weight: 500;
+          }
+          .body-text {
+                color: var(--secondary);
+                margin-bottom: 1rem;
+          }
+          .skills {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 25px;
+          }
+          .skills span {
+                background: rgba(255,255,255,0.05);
+                color: var(--primary);
+                padding: 6px 16px;
+                border-radius: 50px;
+                font-weight: 500;
+                transition: var(--transition);
+                border: 1px solid #e2e8f0;
+                font-size: 0.9rem;
+          }
+          .skills span:hover {
+                background: var(--secondary);
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+          }
+          .face-wrapper {
+                width: 200px;
+                margin: 0 auto 25px;
+          }
+          .face-img {
+                width: 120%;
+                border-radius: 50%;
+                border: 4px solid var(--primary);
+                box-shadow: 0 0 20px rgba(34,211,238,0.7);
+          }
+
+          /* =====================================================
+             CONTACT SECTION
+          ===================================================== */
+          #contact {
+             background: radial-gradient(circle at 20% 30%, rgba(34,211,238,0.08), transparent 60%),
+                         radial-gradient(circle at 80% 70%, rgba(34,211,238,0.06), transparent 60%);
+          }
+          .contact-intro {
+                max-width: 700px;
+                margin: 0 auto;
+                text-align: center;
+                line-height: 1.8;
+                font-size: 1.1rem;
+                color: var(--secondary);
+          }
+
+          /* =====================================================
+             ️ ANIMATIONS
+          ===================================================== */
+          @keyframes typing {
+              from { width: 0; }
+              to { width: 100%; }
+          }
+          @keyframes blink {
+               50% {border-color: transparent; }
+
+          /* =====================================================
+             RESPONSIVE
+          ===================================================== */
+          @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .avatar-coin {
+                width: 200px;
+                height: 200px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            #projectsCarousel .carousel-control-prev {
+                left: -20px;
+            }
+            #projectsCarousel .carousel-control-next {
+                right: -20px;
+            }
+          }
+
+          /* =====================================================
+             UTILITIES
+          ===================================================== */
+          .highlight {
+                color: var(--primary);
+                font-weight: 600;
+          }
+          .text-secondary {
+                color: var(--secondary);
+          }
+          .section-glow {
+                background: rgba(255,255,255,0.02);
+          }
+
+         /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ============= PROGRESS BAR ============ -->
+    <div class="progress-container">
+        <div class="progress-bar" id="scrollIndicator"></div>
+    </div>
+    <!-- ============== NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Renusha</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============== HERO ================= -->
+    <section id="hero" class="d-flex align-items-center text-center">
+        <div class="container">
+           <div class="face-wrapper">
+                    <div class="avatar-coin">
+                        <div class="avatar-inner">
+                            <!-- Front side: Teacher -->
+                            <div class="avatar-face avatar-front">
+                                <img src="static/images/teacher.png" alt="teacher side">
+                            </div>
+
+                            <!-- Back side: Develop -->
+                            <div class="avatar-face avatar-back">
+                                <img src="static/images/developer.png" alt="developer side">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <h1 class="display-4 fw-bold hero-title typewriter-text">
+               Hi, I'm <span class="text-primary-glow">Renusha</span>
+            </h1>
+
+            <p class="lead text-secondary">
+                Teacher turned programmer | From guiding students to building smart, elegant web experiences.
+            </p>
+
+            <div class="mt-4">
+                <a href="#projects" class="btn btn-primary-custom me-2">View My Work</a>
+                <a href="#contact" class="btn btn-outline-custom">Contact Me</a>
+            </div>
+
+            <div class="scroll-indicator mt-4">
+                <span>Scroll to Explore</span>
+                <div class="arrow-down"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== SERVICES ================= -->
+    <section id="services" class="section-glow fade-in">
+        <div class="container">
+            <h2 class="section-title text-center">What I Offer</h2>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center align-items-stretch">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card text-center">
+                       <div class="service-icon">💻</div>
+                       <h5 class="service-title">Web Development</h5>
+                       <p class="service-text">Building clean, modern, and responsive websites with attention to performance.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card text-center">
+                         <div class="service-icon">🎨</div>
+                          <h5 class="service-title">UI/UX Design</h5>
+                          <p class="service-text">User-centered designs that prioritize usability and aesthetic appeal for exceptional digital experiences.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card text-center">
+                       <div class="service-icon">✨</div>
+                       <h5 class="service-title">Creative Coding</h5>
+                       <p class="service-text">Animations and interactions that bring ideas to life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== PROJECTS ================= -->
+    <section id="projects" class="section-glow fade-in">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Showcase Projects</h2>
+
+            <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <!-- Carousel items -->
+                <div class="carousel-inner text-center">
+                    <!-- Project 1 -->
+                    <div class="carousel-item active">
+                        <div class="project-container d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
+                            <img src="static/images/project_1.png" class="project-image flex-shrink-0" alt="Project 1">
+                            <div class="project-description text-start p-3 rounded">
+                                <h5>SoulTrack</h5>
+                                <p class="lead">SoulTrack is a Flask-powered productivity & mood-tracking web app with built-in AI guidance to keep you focused and inspired.
+                                    Log your habits, moods, and milestones, then let the app’s AI coach suggest smart insights and next steps—all visualized through clean, interactive dashboards.
+                                    Built with Flask (Python), HTML, CSS, and JavaScript, SoulTrack blends mindful tracking + intelligent feedback to help you stay consistent and level up every day.
+                                </p>
+                                <div class="project-links">
+                                    <a href="#" target="_blank">Live Demo</a>
+                                    <a href="#">GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="carousel-item">
+                        <div class="project-container d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
+                            <img src="static/images/project_2.png" class="project-image flex-shrink-0" alt="Project 2">
+                            <div class="project-description text-start p-3 rounded">
+                                <h5>EchoMind</h5>
+                                <p class="lead">EchoMind is a Flask-powered interactive thriller game that blends storytelling, emotion, and decision-based gameplay.
+                                    Players navigate tense choices that shape the story’s outcome—where every decision reveals a new layer of suspense.
+                                    Built with Flask (Python), HTML, CSS, and JavaScript, ThrillScape fuses narrative depth, dynamic visuals, and psychological tension into one immersive experience.
+                                </p>
+                                <div class="project-links">
+                                    <a href="#" target="_blank">Live Demo</a>
+                                    <a href="#">GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="carousel-item">
+                        <div class="project-container d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
+                         <img src="static/images/project_3.png" class="project-image flex-shrink-0" alt="Project 3">
+                         <div class="project-description text-start p-3 rounded">
+                            <h5>XOGenius</h5>
+                            <p class="lead">XOGenius is a Flask-powered web game that gives a smart twist to the classic.
+                                Play solo against an AI that analyzes moves for a real challenge, or compete in two-player mode for fun.
+                                Built with Flask (Python), HTML, CSS, and JavaScript, it combines clean design, smooth gameplay, and intelligent logic for an engaging experience on any device.
+                            </p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+                <!-- ============== NAVIGATION CONTROLS ================= -->
+                <div class="carousel-indicators mt-4">
+                    <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Project 1"></button>
+                    <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="1" aria-label="Project 2"></button>
+                    <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="2" aria-label="Project 3"></button>
+                </div>
+
+                <!--- custom arrows with hover glow -->       >
+                <button class="carousel-control-prev custom-arrow" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon arrow-glow" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
+                 <button class="carousel-control-next custom-arrow" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon arrow-glow" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============== ABOUT ================= -->
+    <section id="about" class="section-glow fade-in">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- left column: image -->
+                <div class="col-md-5 text-center mb-4 mb-md-0">
+                    <div class="face-wrapper">
+                        <img src="static/images/renusha-profile.png" alt="My Face" class="face-img">
+                    </div>
+                </div>
+
+                <!--right column: text -->
+                <div class="col-md-7">
+                    <h2 class="section-title mb-4">About Me</h2>
+                    <p class="intro-text">
+                        I’m <span class="highlight">Renusha Parameswaran</span> —
+                        an <span class="highlight">educator turned web developer</span>,
+                        passionate about blending technology with creativity.
+                    </p>
+                    <p class="body-text">
+                        My journey from teaching to coding allows me to simplify complex concepts
+                        and build <strong>clean, modern, and responsive websites</strong> that
+                        prioritize both performance and user experience.
+                    </p>
+                    <div class="skills mt-4">
+                          <span><i class="fab fa-python"></i> Python</span>
+                          <span><i class="fab fa-html5"></i> HTML</span>
+                          <span><i class="fab fa-css3-alt"></i> CSS</span>
+                          <span><i class="fab fa-js-square"></i> JavaScript</span>
+                          <span><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                          <span><i class="fab fa-react"></i> React</span>
+                          <span><i class="fas fa-database"></i> SQLite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+
+    <!-- ============== CONTACT ================= -->
+    <section id="contact" class="section-glow fade-in">
+        <div class="container text-center">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="contact-intro">
+                I'd love to collaborate, brainstorm ideas, or simply talk about coding journeys and creativity.
+            </p>
+            <a href="{{ url_for('contact') }}" class="btn btn-primary-glow mt-3">
+                Get In Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- ============== BOOTSTRAP JS FOR NAVBAR TOGGLER ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // scroll indicator logic
+        window.onscroll = function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            document.getElementById("scrollIndicator").style.width = scrolled + "%";
+        };
+
+        // fade in animation for sections
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+
+        //carousel section
+        const carouselEl = document.getElementById('projectsCarousel');
+        if (carouselEl) new bootstrap.Carousel(carouselEl);
+
+        // typewriter effect
+        document.addEventListener("DOMContentLoaded", function() {
+            const typewriter = document.querySelector(".typewriter-text");
+            const nameSpan = typewriter.querySelector(".text-primary-glow"); // get the "Renusha" span
+            const nameText = nameSpan.textContent; // store Renusha separately
+            const text = "Hi,I'm ";  // text to be typed
+
+            // clear everything before typing starts
+            typewriter.textContent = "";
+
+            // re-attach the span after clearing
+            typewriter.appendChild(nameSpan);
+            nameSpan.textContent = ""; // hide the name initially
+
+            // ensure a text node before the span
+            const textNode = document.createTextNode("");
+            typewriter.insertBefore(textNode, nameSpan);
+
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    textNode.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 120);
+                } else {
+                    // fade in name
+                    nameSpan.textContent = nameText;
+                    nameSpan.style.opacity = 0;
+                    nameSpan.style.transition = "opacity 0.6s ease";
+                    setTimeout(() => {
+                        nameSpan.style.opacity = 1;
+                        typewriter.style.borderRight = "none";
+                    }, 200);
+                }
+            }
+
+            // add blinking cursor
+            typewriter.style.borderRight = "2px solid #00bfff";
+            typewriter.style.paddingRight = "5px";
+            setInterval(() => {
+                typewriter.style.borderRightColor =
+                    typewriter.style.borderRightColor === "transparent" ? "#00bfff" : "transparent";
+            }, 500);
+
+            type();
+        });
+    </script>
+</body>
+</html>
